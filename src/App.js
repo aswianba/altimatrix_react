@@ -1,6 +1,7 @@
 import React from "react";
-import Search from "./components/search";
-import DisplayFlights from "./components/displayFlights";
+import Search from "./components/Search";
+import DisplayFlights from "./components/DisplayFlights";
+import Pagination from "./components/Pagination";
 
 class App extends React.Component {
   render() {
@@ -13,7 +14,10 @@ class App extends React.Component {
         }}
       >
         <Search />
-        <DisplayFlights />
+        <div style={{ position: "relative", height: "500px" }}>
+          <DisplayFlights />
+        </div>
+        <Pagination />
       </div>
     );
   }

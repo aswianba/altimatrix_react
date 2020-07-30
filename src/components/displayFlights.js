@@ -1,11 +1,18 @@
 import React from "react";
 import "../flightdetails.css";
 import { connect } from "react-redux";
-import FlightItem from "./flightItems";
+import FlightItem from "./FlightItems";
+import { paginateGridRecords } from "../utils/utils";
 
-const DisplayFlights = ({ flightDetails }) => {
-  if (flightDetails && flightDetails.length > 0) {
-    return flightDetails.map((item) => {
+const DisplayFlights = ({ flightDetails, itemsPerPage, selectedPage }) => {
+  let newflightDetails = paginateGridRecords(
+    flightDetails,
+    selectedPage,
+    itemsPerPage
+  );
+  console.log(newflightDetails);
+  if (newflightDetails && newflightDetails.length > 0) {
+    return newflightDetails.map((item) => {
       return <FlightItem key={item.flightNumber} flightData={item} />;
     });
   } else {
@@ -17,8 +24,9 @@ const DisplayFlights = ({ flightDetails }) => {
   }
 };
 
-const mapStateToProps = ({ flightDetails }) => {
-  if (flightDetails) return { flightDetails };
+const mapStateToProps = ({ flightDetails, itemsPerPage, selectedPage }) => {
+  if (flightDetails)
+    return { flightDetails: [...flightDetails], itemsPerPage, selectedPage };
   else return {};
 };
 

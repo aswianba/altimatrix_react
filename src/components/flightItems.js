@@ -24,7 +24,7 @@ const FlightItem = ({ flightData }) => {
   return (
     <div className="card">
       <div className="container">
-        <img src="logo192.png" alt="img" width="30" height="30" />
+        <img src="logo192.png" alt="img" width="25" height="25" />
         <label style={{ verticalAlign: "super", paddingLeft: "5px" }}>
           {flightNumber}
           <b>:</b>

@@ -1,6 +1,6 @@
 import React from "react";
 import "../flightdetails.css";
-import getFlightDetails from "../actions";
+import { getFlightDetails, setSelectedPage } from "../actions";
 import { connect } from "react-redux";
 
 class Search extends React.Component {
@@ -13,6 +13,7 @@ class Search extends React.Component {
       destinationCity: data.get("destination_city"),
       travelDate: data.get("travel_date"),
     });
+    this.props.setSelectedPage(1);
   };
 
   render() {
@@ -55,4 +56,6 @@ const mapStateToProps = (state) => {
   return { ...state };
 };
 
-export default connect(mapStateToProps, { getFlightDetails })(Search);
+export default connect(mapStateToProps, { getFlightDetails, setSelectedPage })(
+  Search
+);
